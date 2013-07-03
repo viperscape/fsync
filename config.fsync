@@ -1,0 +1,45 @@
+# fsync modified configuration file
+# fsync is non-destructive and will not remove files, it only copies the differences
+# this file does not need to be shipped with fsync
+# note that lines with # at the beginning will be skipped
+
+# by default fsync looks for remote shares 
+# U:/.Backups (on Windows, which assumes the usernamehere share is mapped to drive U)
+# /Volumes/usernamehere/.Backups (on OS X)
+
+# usage examples:
+
+# take not that there is no trailing slash
+# also take not that ALL slashes are forward facing
+
+# change destination location
+# note that using $user will inherit the currently logged in username of the local machine
+# macshare /Volumes/BackupLacieDrive/MyAwesomeBackups
+ winshare T:/Backup/$user
+
+# changing the local path
+# note that using $user will inherit the currently logged in username of the local machine
+ winpath  C:/Users/$user
+# macpath /Volumes/CoolDrive/MyAwesomeStuff
+
+# take note that both configurations can exist simultaneously 
+# as each OS version of fsync will automatically use only one or the other
+
+# hide the folder? use lowercase, hides on default the parent folder but not folders above this
+# hide false
+
+# disable internal scheduling/infinite runtime
+# specify either in seconds or disable
+# sched 3600
+# sched false
+
+# filters, inclusion and exclusion
+# this will override the default filters
+# note the use of commas on each and every element
+# note that the use of * is a wildcard for incfilter to include all folders and files!
+# which will disregard exclude filter, duh
+# filters search for filter string within checked folder strings, so Doc will pick up a Documents folder
+
+# excfilter, Music, Videos, Movies, Pictures, Downloads, AppData, Hyper-V, My Data Sources, Microsoft User Data, Identity, Library, Public
+# incfilter, Documents, Desktop, Doc, *
+
